@@ -1,15 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Box, Input, Button, ButtonGroup, Card, Typography, Stack, Tooltip } from '@mui/joy';
+import {
+    Button, ButtonGroup,
+    Card, CardHeader, CardTitle, CardContent,
+    InputGroup, InputGroupInput, InputGroupPrefix,
+    TooltipRoot, TooltipContent,
+} from '@heroui/react';
 import { v4 as IDGenerate } from 'uuid';
-import AndroidOutlinedIcon from '@mui/icons-material/AndroidOutlined';
-import AppleIcon from '@mui/icons-material/Apple';
-import ComputerOutlinedIcon from '@mui/icons-material/ComputerOutlined';
-import HelpOutlinedIcon from '@mui/icons-material/HelpOutlined';
-import AppRegistrationOutlinedIcon from '@mui/icons-material/AppRegistrationOutlined';
-import FingerprintOutlinedIcon from '@mui/icons-material/FingerprintOutlined';
-import SubtitlesOutlinedIcon from '@mui/icons-material/SubtitlesOutlined';
-import FormatAlignLeftOutlinedIcon from '@mui/icons-material/FormatAlignLeftOutlined';
-import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
+import { Smartphone, Apple, Monitor, HelpCircle, Fingerprint, AlignLeft, User, Tag, Hash } from 'lucide-react';
 
 type Plataform = 'android' | 'ios' | 'desktop';
 
@@ -37,8 +34,8 @@ export default function ManifestEditor({ onChange }: ManifestEditorProps) {
     const togglePlatforms = (platform: Plataform) => {
         setPlataforms(prev =>
             prev.includes(platform) ?
-                prev.filter(p => p !== platform) : //remove
-                [...prev, platform] //add
+                prev.filter(p => p !== platform) :
+                [...prev, platform]
         );
     };
 
@@ -59,102 +56,112 @@ export default function ManifestEditor({ onChange }: ManifestEditorProps) {
         onChange(manifest);
     }, [ID_Manifest, numberVersion, title, description, author, plataforms, onChange]);
 
-
-
     return (
-        <Box>
-            <Card>
-                <Typography level="title-lg">Manifest Editor</Typography>
-                <Stack>
-                    <Typography level="title-sm">ID Manifest</Typography>
-                    <Stack direction="row" spacing={2}>
-                        <Input
-                            startDecorator={<AppRegistrationOutlinedIcon />}
-
-                            type="text"
-                            value={ID_Manifest}
-                            onChange={(e) => setID_Manifest(e.target.value)}
-                            sx={{ flex: 1 }}
-                            placeholder='My ID Manifest is..'
-                        />
-                        <Button onClick={handleGenerateID}>Auto Generate</Button>
-                    </Stack>
-                </Stack>
-
-                <Stack>
-                    <Typography>Numeric version code</Typography>
-                    <Input
-                        startDecorator={<FingerprintOutlinedIcon />}
-                        type="number"
-                        value={numberVersion}
-                        onChange={(e) => { if (Number(e.target.value) > 0) setNumberVersion(Number(e.target.value)) }}
-                    />
-                </Stack>
-
-                <Stack>
-                    <Typography>Title</Typography>
-                    <Input
-                        startDecorator={<SubtitlesOutlinedIcon />}
-                        value={title} onChange={(e) => setTitle(e.target.value)}
-                        placeholder='My plugin...' />
-                </Stack>
-
-                <Stack>
-                    <Typography>Description</Typography>
-                    <Input
-                        startDecorator={<FormatAlignLeftOutlinedIcon />}
-                        value={description} onChange={(e) => setDescription(e.target.value)}
-                        placeholder='My plugin...' />
-                </Stack>
-
-                <Stack>
-                    <Typography>Author</Typography>
-                    <Input
-                        startDecorator={<BadgeOutlinedIcon />}
-                        value={author} onChange={(e) => setAuthor(e.target.value)}
-                        placeholder='My nickname is...' />
-                </Stack>
-
-                <Stack spacing={1}>
-                    <Stack
-                        direction="row"
-                        spacing={1}
-                        alignItems="center">
-                        <Typography>Supported platforms</Typography>
-                        <Tooltip
-                            title='You can add more than 1'
-                            placement='right'><HelpOutlinedIcon
-                                color='primary'
+        <Card>
+            <CardHeader>
+                <CardTitle>Manifest Editor</CardTitle>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                    <span className="text-sm font-medium">ID Manifest</span>
+                    <div className="flex gap-2">
+                        <InputGroup className="flex-1">
+                            <InputGroupPrefix><Tag size={16} className="text-foreground/50" /></InputGroupPrefix>
+                            <InputGroupInput
+                                type="text"
+                                value={ID_Manifest}
+                                onChange={(e) => setID_Manifest(e.target.value)}
+                                placeholder="My ID Manifest is.."
                             />
-                        </Tooltip>
+                        </InputGroup>
+                        <Button variant="primary" onPress={handleGenerateID}>Auto Generate</Button>
+                    </div>
+                </div>
 
-                    </Stack>
-                    <ButtonGroup spacing={1}>
+                <div className="flex flex-col gap-1">
+                    <span className="text-sm font-medium">Numeric version code</span>
+                    <InputGroup>
+                        <InputGroupPrefix><Fingerprint size={16} className="text-foreground/50" /></InputGroupPrefix>
+                        <InputGroupInput
+                            type="number"
+                            value={String(numberVersion)}
+                            onChange={(e) => { if (Number(e.target.value) > 0) setNumberVersion(Number(e.target.value)) }}
+                        />
+                    </InputGroup>
+                </div>
+
+                <div className="flex flex-col gap-1">
+                    <span className="text-sm font-medium">Title</span>
+                    <InputGroup>
+                        <InputGroupPrefix><Hash size={16} className="text-foreground/50" /></InputGroupPrefix>
+                        <InputGroupInput
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            placeholder="My plugin..."
+                        />
+                    </InputGroup>
+                </div>
+
+                <div className="flex flex-col gap-1">
+                    <span className="text-sm font-medium">Description</span>
+                    <InputGroup>
+                        <InputGroupPrefix><AlignLeft size={16} className="text-foreground/50" /></InputGroupPrefix>
+                        <InputGroupInput
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            placeholder="My plugin..."
+                        />
+                    </InputGroup>
+                </div>
+
+                <div className="flex flex-col gap-1">
+                    <span className="text-sm font-medium">Author</span>
+                    <InputGroup>
+                        <InputGroupPrefix><User size={16} className="text-foreground/50" /></InputGroupPrefix>
+                        <InputGroupInput
+                            value={author}
+                            onChange={(e) => setAuthor(e.target.value)}
+                            placeholder="My nickname is..."
+                        />
+                    </InputGroup>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                    <div className="flex items-center gap-1">
+                        <span className="text-sm font-medium">Supported platforms</span>
+                        <TooltipRoot>
+                            <button type="button" className="cursor-help text-primary">
+                                <HelpCircle size={16} />
+                            </button>
+                            <TooltipContent>You can add more than 1</TooltipContent>
+                        </TooltipRoot>
+                    </div>
+                    <ButtonGroup>
                         <Button
-                            startDecorator={<AndroidOutlinedIcon />}
-                            variant={isActivePlataforms('android') ? 'solid' : 'outlined'}
-                            onClick={() => togglePlatforms('android')}
+                            variant={isActivePlataforms('android') ? 'primary' : 'outline'}
+                            onPress={() => togglePlatforms('android')}
                         >
+                            <Smartphone size={16} />
                             Android
                         </Button>
                         <Button
-                            startDecorator={<AppleIcon />}
-                            variant={isActivePlataforms('ios') ? 'solid' : 'outlined'}
-                            onClick={() => togglePlatforms('ios')}
+                            variant={isActivePlataforms('ios') ? 'primary' : 'outline'}
+                            onPress={() => togglePlatforms('ios')}
                         >
+                            <Apple size={16} />
                             iOS
                         </Button>
                         <Button
-                            startDecorator={<ComputerOutlinedIcon />}
-                            variant={isActivePlataforms('desktop') ? 'solid' : 'outlined'}
-                            onClick={() => togglePlatforms('desktop')}
+                            variant={isActivePlataforms('desktop') ? 'primary' : 'outline'}
+                            onPress={() => togglePlatforms('desktop')}
                         >
+                            <Monitor size={16} />
                             Desktop
                         </Button>
                     </ButtonGroup>
-                    <Typography level="body-sm">{plataforms.join(', ')}</Typography>
-                </Stack>
-            </Card>
-        </Box>
+                    <span className="text-xs text-foreground/50">{plataforms.join(', ')}</span>
+                </div>
+            </CardContent>
+        </Card>
     );
-};
+}

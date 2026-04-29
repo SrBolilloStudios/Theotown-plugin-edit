@@ -1,24 +1,19 @@
-import { Card, Typography } from "@mui/joy";
-import { CssVarsProvider, extendTheme } from "@mui/joy";
-//import {useState} from "react";
+import { Card, CardHeader, CardTitle, CardContent } from '@heroui/react';
 
 export default function JsonView({ jsonText }: any) {
-    const theme = extendTheme({
-        components: {
-            JoyCard: {
-                defaultProps: {
-                    variant: 'outlined',
-                    color: 'primary'
-                }
-            }
-        }
-    });
     return (
-        <CssVarsProvider theme={theme}>
-            <Card>
-                <Typography level="title-lg">JSON View</Typography>
-                <Typography sx={{ fontFamily: '"Google Sans Code", sans-serif' }}>{jsonText}</Typography>
-            </Card>
-        </CssVarsProvider>
+        <Card className="h-full">
+            <CardHeader>
+                <CardTitle>JSON View</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <pre
+                    className="text-xs whitespace-pre-wrap break-all"
+                    style={{ fontFamily: '"Google Sans Code", monospace' }}
+                >
+                    {jsonText}
+                </pre>
+            </CardContent>
+        </Card>
     );
 }
