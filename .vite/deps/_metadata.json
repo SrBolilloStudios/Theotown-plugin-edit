@@ -1,0 +1,67 @@
+{
+  "hash": "0ba8567f",
+  "configHash": "7eb96c26",
+  "lockfileHash": "299e63f5",
+  "browserHash": "3a65a120",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "d1cf05ec",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "4a9d9e0b",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "a0f72485",
+      "needsInterop": true
+    },
+    "i18next": {
+      "src": "../../node_modules/i18next/dist/esm/i18next.js",
+      "file": "i18next.js",
+      "fileHash": "f20f34df",
+      "needsInterop": false
+    },
+    "react-i18next": {
+      "src": "../../node_modules/react-i18next/dist/es/index.js",
+      "file": "react-i18next.js",
+      "fileHash": "139f61f7",
+      "needsInterop": false
+    },
+    "i18next-browser-languagedetector": {
+      "src": "../../node_modules/i18next-browser-languagedetector/dist/esm/i18nextBrowserLanguageDetector.js",
+      "file": "i18next-browser-languagedetector.js",
+      "fileHash": "0a7016c4",
+      "needsInterop": false
+    },
+    "@heroui/react": {
+      "src": "../../node_modules/@heroui/react/dist/index.js",
+      "file": "@heroui_react.js",
+      "fileHash": "ad608f4d",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-IW4WGCVT": {
+      "file": "chunk-IW4WGCVT.js"
+    },
+    "chunk-POQVU2VI": {
+      "file": "chunk-POQVU2VI.js"
+    },
+    "chunk-QD6FAXAC": {
+      "file": "chunk-QD6FAXAC.js"
+    },
+    "chunk-HA2I5Q66": {
+      "file": "chunk-HA2I5Q66.js"
+    },
+    "chunk-5WRI5ZAA": {
+      "file": "chunk-5WRI5ZAA.js"
+    }
+  }
+}
