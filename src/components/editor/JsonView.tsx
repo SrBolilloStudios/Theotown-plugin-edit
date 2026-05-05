@@ -9,9 +9,9 @@ function formatJson(raw: string): string {
   }
 }
 
-function JsonView({ icon = null, title, json }: { icon: React.ReactNode; title: string; json: string }) {
+function JsonView({ icon = null, title, json, className }: { icon: React.ReactNode; title: string; json: string; className?: string }) {
   return (
-    <div>
+    <div className={className}>
       <Card>
         <Card.Header>
           <div className="flex flex-row gap-3">

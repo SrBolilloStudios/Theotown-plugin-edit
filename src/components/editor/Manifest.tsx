@@ -2,21 +2,15 @@ import { Card, Input, TextArea, Button } from "@heroui/react";
 import { v4 as uuidv4 } from "uuid";
 import { useState, useEffect } from "react";
 import { Bolt } from "lucide-react";
-import { JsonView } from "./JsonView";
+import type { ManifestType } from "../../lib/type";
 
-type ManifestType = {
-  uuid: string;
-  name: string;
-  version: string;
-  description: string;
-  author: string;
-};
-
-interface ManifestProps {
+function Manifest({
+  onUpdate,
+  className,
+}: {
   onUpdate: (data: string) => void;
-}
-
-function Manifest({ onUpdate }: ManifestProps) {
+  className?: string;
+}) {
   const [uuidManifest, setUuidManifest] = useState("");
   const handleGenerateUUID = () => {
     const uuid = uuidv4();
@@ -38,7 +32,7 @@ function Manifest({ onUpdate }: ManifestProps) {
     onUpdate(JSON.stringify(manifestData, null, 2));
   }, [uuidManifest, name, version, description, author]);
   return (
-    <div>
+    <div className={className}>
       <Card>
         <Card.Header>
           <div className="flex flex-row gap-3">
