@@ -182,3 +182,17 @@
     border-right-color: var(--border);
   }
 }
+
+
+.google-sans-code-<uniquifier> {
+  font-family: "Google Sans Code", monospace;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "MONO" 1;
+}
+
+@theme {
+  --font-display: "Google Sans Code", monospace;
+}

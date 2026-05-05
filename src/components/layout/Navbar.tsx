@@ -1,9 +1,6 @@
 import {
   Select,
-  Switch,
   ListBox,
-  Label,
-  Separator,
   Button,
   Popover,
 } from "@heroui/react";
@@ -18,7 +15,7 @@ type Links = {
 };
 
 function Navbar() {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const { theme, setTheme } = useTheme("dark");
 
   const LanguajeSelect = () => {
