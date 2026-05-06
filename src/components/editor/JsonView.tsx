@@ -20,7 +20,7 @@ function JsonView({ icon = null, title, json, className }: { icon: React.ReactNo
           </div>
         </Card.Header>
         <Card.Content>
-          <pre className="font-google-sans-code text-sm whitespace-pre-wrap break-words">
+          <pre className="font-google-sans-code text-sm whitespace-pre-wrap wrap-break-words">
             {formatJson(json)}
           </pre>
         </Card.Content>

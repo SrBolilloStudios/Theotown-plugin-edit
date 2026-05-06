@@ -1,6 +1,6 @@
 import { Link } from "@heroui/react";
 import { NamePage } from "../icons/NamePage";
-import { Icon } from "../icons/Icon";
+import { Icon, SrBolilloIcon } from "../icons/Icon";
 
 function Footer() {
   return (
@@ -11,11 +11,7 @@ function Footer() {
         </div>
         <div className="flex flex-col gap-3 justify-center items-start">
           <div className="flex flex-row gap-3 items-center">
-            <img
-              src="srbolillo_icon.svg"
-              alt="SrBolillo Studios"
-              className="w-8 h-8"
-            />
+            <SrBolilloIcon className="w-8 h-8"/>
             <p className="text-xl font-medium">SrBolillo Studios</p>
           </div>
 
